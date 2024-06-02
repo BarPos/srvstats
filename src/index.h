@@ -135,9 +135,9 @@ static std::string indexFile = R"html(
 
             uptime.innerHTML = d.uptime
             cores.innerHTML = d.cores
-            cpu.innerHTML = Math.round(d.cpu * 100) / 100
-            memory.innerHTML = Math.round(d.memory * 100) / 100
-            swap.innerHTML = Math.round(d.swap * 100) / 100
+            cpu.innerHTML = d.cpu < 10 ? Math.round(d.cpu * 100) / 100 : Math.round(d.cpu)
+            memory.innerHTML = d.memory < 10 ? Math.round(d.memory * 100) / 100 : Math.round(d.memory)
+            swap.innerHTML = d.swap < 10 ? Math.round(d.swap * 100) / 100 : Math.round(d.swap)
 
             _cpu.style.width = d.cpu + "%"
             _memory.style.width = d.memory + "%"
