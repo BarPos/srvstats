@@ -24,7 +24,8 @@ After=network.target
 Type=exec
 Restart=always
 RestartSec=1
-ExecStart=(path to the instalation)/out/srvstats
+WorkingDirectory=/root/srvstats/out/
+ExecStart=/root/srvstats/out/srvstats
 
 [Install]
 WantedBy=multi-user.target
