@@ -68,6 +68,7 @@ static std::string indexFile = R"html(
             height: 100%;
             transform: translateY(-16px);
             background: #3498db;
+            transition: 100ms;
         }
         .data1{
             width: calc(100% - 2rem);
