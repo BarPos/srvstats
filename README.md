@@ -41,6 +41,8 @@ to add ssl you need to use a proxy
 navigate to srvstats directory
 ```
 systemctl stop srvstats
+rm -rf out
+mkdir out
 git pull
 cd out
 cmake --build .
