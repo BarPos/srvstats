@@ -45,6 +45,7 @@ rm -rf out
 mkdir out
 git pull
 cd out
+cmake ..
 cmake --build .
 systemctl start srvstats
 ```
