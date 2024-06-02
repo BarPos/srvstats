@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
     startCacheThread();
 
     CROW_ROUTE(app, "/")([]() {
-        return indexFile;
+        return getIndexPage();
         });
 
     CROW_ROUTE(app, "/data")([]() {
