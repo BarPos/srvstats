@@ -1,4 +1,5 @@
 # srcstats
+ONLY WORKS ON LINUX
 
 [live demo](https://srvstats.barpos.net/)
 
