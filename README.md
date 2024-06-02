@@ -4,12 +4,14 @@ ONLY WORKS ON LINUX
 [live demo](https://srvstats.barpos.net/)
 
 ### Instalation
-`git clone https://github.com/BarPos/srvstats`
-`cd srvstats`
-`mkdir out`
-`cd out`
-`cmake ..`
-`cmake --build .`
+```
+git clone https://github.com/BarPos/srvstats
+cd srvstats
+mkdir out
+cd out
+cmake ..
+cmake --build .
+```
 
 ### Add to systemd
 Create a service at `/etc/systemd/system/srvstats.service`
@@ -27,20 +29,25 @@ ExecStart=(path to the instalation)/out/srvstats
 [Install]
 WantedBy=multi-user.target
 ```
-`systemctl start srvstats`
-`systemctl enable srvstats`
+```
+systemctl start srvstats
+systemctl enable srvstats
+```
 srvstats will run on port `18080`
 to add ssl you need to use a proxy
 
 ### Updating
 navigate to srvstats directory
-`systemctl stop srvstats`
-`git pull`
-`cd out`
-`cmake --build .`
-`systemctl start srvstats`
+```
+systemctl stop srvstats
+git pull
+cd out
+cmake --build .
+systemctl start srvstats
+```
 
 ### License
+```
 MIT License
 
 Copyright (c) 2024 Bartłomiej Postek
@@ -62,3 +69,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
