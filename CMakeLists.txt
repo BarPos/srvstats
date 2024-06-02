@@ -13,6 +13,7 @@ if (WIN32)
 endif (WIN32)
 if (UNIX)
     target_compile_definitions("srvstats" PRIVATE "_LINUX")
+    target_link_libraries("srvstats" PRIVATE "pthread")
 endif (UNIX)
 
 
