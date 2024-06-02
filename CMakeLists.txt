@@ -18,8 +18,8 @@ endif (UNIX)
 
 add_custom_command(TARGET "srvstats" POST_BUILD 
   COMMAND "${CMAKE_COMMAND}" -E copy 
-     "${CMAKE_SOURCE_DIR}/src/index.html"
-     "${CMAKE_BINARY_DIR}/index.html" 
+     "$<TARGET_PROPERTY:srvstats,SOURCE_DIR>/src/index.html"
+     "$<TARGET_PROPERTY:srvstats,BINARY_DIR>/index.html" 
   COMMENT "Copying index to output directory")
 
 file(GLOB_RECURSE APP_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/**.cpp")
