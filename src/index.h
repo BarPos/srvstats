@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <string>
 
@@ -24,6 +24,7 @@ static std::string indexFile = R"html(
             align-items: center;
             height: 100vh;
             width: 100vw;
+            margin: 0;
         }
         .box{
             display: flex;
@@ -85,6 +86,17 @@ static std::string indexFile = R"html(
             width: calc(48rem - 2rem - 92px - 1rem);
             max-width: calc(100vw - 2rem - 92px - 1rem);
         }
+        .footer{
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+        }
+        .footer p{
+            text-align: right;
+            color: #95a5a6;
+            margin: 0;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -117,6 +129,11 @@ static std::string indexFile = R"html(
                 <p><span class="_swap">0</span>%</p>
             </div>
         </div>
+    </div>
+
+    <div class="footer">
+        <p>Made with ❤️ and ☕</p>
+        <p>Copyright &copy; 2024 Bartłomiej Postek</p>
     </div>
 
     <script>
