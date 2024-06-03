@@ -154,7 +154,7 @@
                 <div class="data-left">
                     <p>CPU Ussage:</p>
                     <p>Memory:</p>
-                    <p class="hide-swap">Swap:</p>
+                    <p>Swap:</p>
                 </div>
                 <div class="data-center">
                     <div>
@@ -163,14 +163,14 @@
                     <div>
                         <div class="_memory_" style="width: 0%;"></div>
                     </div>
-                    <div class="hide-swap">
+                    <div>
                         <div class="_swap_" style="width: 0%;"></div>
                     </div>
                 </div>
                 <div class="data-right">
                     <p><span class="_cpu">0</span>%</p>
                     <p><span class="_memory">0</span>%</p>
-                    <p class="hide-swap"><span class="_swap">0</span>%</p>
+                    <p><span class="_swap">0</span>%</p>
                 </div>
             </div>
         </div>
@@ -203,8 +203,6 @@
         const _memory = document.querySelector("._memory_")
         const _swap = document.querySelector("._swap_")
 
-        const hideSwap = document.querySelectorAll(".hide-swap")
-
         const update = async () => {
             var data = await fetch("/data")
             var d = await data.json()
@@ -218,15 +216,6 @@
             _cpu.style.width = d.cpu + "%"
             _memory.style.width = d.memory + "%"
             _swap.style.width = d.swap + "%"
-
-
-            hideSwap.forEach(element => {
-                if (d.swap == 0) {
-                    element.style.display = "none"
-                } else {
-                    element.style.display = "block"
-                }
-            });
         }
         update()
         setInterval(async () => {
