@@ -23,6 +23,7 @@
             height: 100vh;
             width: 100vw;
             margin: 0;
+            overflow: hidden;
         }
 
         .box {
@@ -30,7 +31,7 @@
             flex-direction: column;
             align-items: center;
 
-            width: 100%;
+            width: calc(100% - 2rem);
             max-width: 48rem;
             border: 1px #34495e solid;
             border-radius: 1rem;
@@ -44,7 +45,7 @@
         }
 
         .data {
-            width: calc(100% - 2rem);
+            width: calc(100% - 2rem - 2rem);
 
             display: flex;
             flex-direction: row;
@@ -54,24 +55,31 @@
         .data-left {
             text-align: right;
             width: 92px;
+            min-width: 92px;
         }
 
         .data-right {
             width: 42px;
+            min-width: 42px;
         }
 
         .data-center {
-            width: calc(48rem - 2rem - 92px - 42px - 2rem);
+            width: calc(48rem - 2rem - 92px - 42px - 2rem - 2rem);
+            max-width: calc(100% - 2rem - 92px - 42px);
+            transform: translateX(-16px);
             display: block;
-            width: max-content;
+            /* width: max-content; */
+            margin-left: 16px;
+            margin-right: 16px;
         }
 
         .data-center div {
+            transform: translateX(16px);
             height: 20px;
             margin-top: 16px;
             margin-bottom: 16px;
-            width: calc(48rem - 2rem - 92px - 42px - 2rem);
-            max-width: calc(100vw - 2rem - 92px - 42px - 2rem);
+            width: calc(100%);
+            /* max-width: calc(100vw - 2rem - 92px - 42px - 2rem - 2rem); */
             border-radius: 1rem;
             background: #95a5a6;
             overflow: hidden;
@@ -86,7 +94,7 @@
         }
 
         .data1 {
-            width: calc(100% - 2rem);
+            width: calc(100% - 2rem - 2rem);
 
             display: flex;
             flex-direction: row;
@@ -100,11 +108,13 @@
         .data1-left {
             text-align: right;
             width: 92px;
+            min-width: 92px;
         }
 
         .data1-right {
-            width: calc(48rem - 2rem - 92px - 1rem);
-            max-width: calc(100vw - 2rem - 92px - 1rem);
+            width: calc(48rem - 2rem - 92px - 1rem - 2rem);
+            max-width: calc(100vw - 2rem - 92px - 1rem - 2rem);
+            margin-left: 16px;
         }
 
         .footer {
@@ -118,6 +128,10 @@
             color: #95a5a6;
             margin: 0;
             margin-top: 0.25rem;
+        }
+
+        .footer p:last-of-type {
+            margin-bottom: 0;
         }
 
         .footer p a,
