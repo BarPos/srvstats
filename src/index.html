@@ -246,7 +246,7 @@
                 console.log(data)
                 update(data)
 
-                setTimeout(() => { socket.send("update"); }, 500)
+                setTimeout(() => { socket.send("update"); }, 1000)
             }
             socket.onclose = (event) => {
                 console.log("WebSocket connection closed");
