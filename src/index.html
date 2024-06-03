@@ -229,7 +229,16 @@
             _swap.style.width = d.swap + "%"
         }
 
-        const socket = new WebSocket("ws://" + location.host + "/ws");
+        var socket;
+
+        const connect = () => {
+            if (window.location.protocol == "https:")
+                socker = new WebSocket("wss://" + location.host + "/ws");
+            else
+                socker = new WebSocket("ws://" + location.host + "/ws");
+        }
+        connect()
+
         socket.onopen = () => {
             console.log("WebSocket connection opened");
             // Send a message to the server
@@ -244,11 +253,11 @@
         }
         socket.onclose = (event) => {
             console.log("WebSocket connection closed");
-            socket = new WebSocket("ws://" + location.host + "/ws");
+            connect()
         };
         socket.onerror = (error) => {
             console.error("WebSocket error:", error);
-            socket = new WebSocket("ws://" + location.host + "/ws");
+            connect()
         };
     </script>
 </body>
