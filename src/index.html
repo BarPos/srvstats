@@ -236,18 +236,11 @@
             });
         }
 
-        var socket;
         const connect = () => {
-            try {
-                socket.close()
-            } catch (e) {
-                console.error(e)
-            }
-            if (window.location.protocol == "https:")
-                socket = new WebSocket("wss://" + location.host + "/ws");
-            else
-                socket = new WebSocket("ws://" + location.host + "/ws");
+            var protocol = "ws://"
+            if (window.location.protocol.includes('https')) protocol = "wss://"
 
+            var socket = new WebSocket(protocol + location.host + "/ws");
             socket.onopen = () => {
                 console.log("WebSocket connection opened");
                 // Send a message to the server
@@ -266,6 +259,7 @@
             };
             socket.onerror = (error) => {
                 console.error("WebSocket error:", error);
+                socket.close()
                 connect()
             };
         }
