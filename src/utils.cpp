@@ -24,34 +24,34 @@ std::string _getUptime() {
 	if ((timeStorage["days"] = time / 86400) > 0)
 	{
 		if (timeStorage["days"] == 1)
-			oss << timeStorage["days"] << " day ";
+			oss << timeStorage["days"] << "d ";
 		if (timeStorage["days"] > 1)
-			oss << timeStorage["days"] << " days ";
+			oss << timeStorage["days"] << "d ";
 	}
 	if ((timeStorage["hours"] = time / 3600 % 24) > 0)
 	{
 		if (timeStorage["hours"] == 1)
-			oss << timeStorage["hours"] << " hour ";
+			oss << timeStorage["hours"] << "h ";
 		if (timeStorage["hours"] > 1)
-			oss << timeStorage["hours"] << " hours ";
+			oss << timeStorage["hours"] << "h ";
 	}
 	if ((timeStorage["minutes"] = time / 60 % 60) > 0)
 	{
 		if (timeStorage["minutes"] == 1)
-			oss << timeStorage["minutes"] << " minute ";
+			oss << timeStorage["minutes"] << "m ";
 		if (timeStorage["minutes"] > 1)
-			oss << timeStorage["minutes"] << " minutes ";
+			oss << timeStorage["minutes"] << "m ";
 	}
 	if ((timeStorage["seconds"] = time % 60) > 0)
 	{
 		if (timeStorage["seconds"] == 1)
 		{
-			oss << timeStorage["seconds"] << " second";
+			oss << timeStorage["seconds"] << "s";
 		}
 
 		if (timeStorage["seconds"] > 1)
 		{
-			oss << timeStorage["seconds"] << " seconds";
+			oss << timeStorage["seconds"] << "s";
 		}
 	}
 
