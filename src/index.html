@@ -260,7 +260,6 @@
             socket.onerror = (error) => {
                 console.error("WebSocket error:", error);
                 socket.close()
-                connect()
             };
         }
         connect()
