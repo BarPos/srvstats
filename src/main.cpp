@@ -27,15 +27,20 @@ int main(int argc, char** argv) {
         });
 
     CROW_ROUTE(app, "/data")([]() {
-        crow::json::wvalue x({});
-        x["cores"] = getCpuCores();
-        x["cpu"] = getCpuUssage();
-        x["memory"] = getMemUssage();
-        x["swap"] = getSwapUssage();
-        x["uptime"] = getUptime();
-
-        return x;
+        return "'/data' is deprecated. Use websockets '/ws'";
         });
+
+    CROW_WEBSOCKET_ROUTE(app, "/ws")
+        .onaccept([&](const crow::request& req, void** userdata) {
+            return true;
+            })
+        .onmessage([&](crow::websocket::connection& conn, const std::string& message, bool is_binary) {
+            if (!is_binary && message == "update") {
+                conn.send_text(getJson().dump());
+                return true;
+            }
+            return true;
+            });
 
     app.port(18080).multithreaded().run();
 }

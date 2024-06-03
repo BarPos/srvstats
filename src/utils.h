@@ -10,9 +10,12 @@
 #include <sstream>
 #include <map>
 
+#include "crow_all.h"
 #include "cpu.h"
 
 void startCacheThread();
+
+crow::json::wvalue getJson();
 
 
 unsigned int getCpuCores();

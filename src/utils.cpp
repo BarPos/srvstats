@@ -1,5 +1,16 @@
 #include "utils.h"
 
+crow::json::wvalue getJson() {
+	crow::json::wvalue x({});
+	x["cores"] = getCpuCores();
+	x["cpu"] = getCpuUssage();
+	x["memory"] = getMemUssage();
+	x["swap"] = getSwapUssage();
+	x["uptime"] = getUptime();
+
+	return x;
+}
+
 
 unsigned int getCpuCores(){
 	return std::thread::hardware_concurrency();
@@ -64,7 +75,7 @@ void startCacheThread() {
 		while (true) {
 			CPU_stats t1 = read_cpu_data();
 
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
 			CPU_stats t2 = read_cpu_data();
 			ussageCache = (100.0f * get_cpu_usage(t1, t2));

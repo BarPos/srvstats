@@ -217,10 +217,7 @@
         const _memory = document.querySelector("._memory_")
         const _swap = document.querySelector("._swap_")
 
-        const update = async () => {
-            var data = await fetch("/data")
-            var d = await data.json()
-
+        const update = async (d) => {
             uptime.innerHTML = d.uptime
             cores.innerHTML = d.cores
             cpu.innerHTML = d.cpu < 10 ? Math.round(d.cpu * 100) / 100 : (d.cpu < 100 ? Math.round(d.cpu * 10) / 10 : Math.round(d.cpu))
@@ -231,10 +228,28 @@
             _memory.style.width = d.memory + "%"
             _swap.style.width = d.swap + "%"
         }
-        update()
-        setInterval(async () => {
-            await update();
-        }, 1000)
+
+        const socket = new WebSocket("ws://" + location.host + "/ws");
+        socket.onopen = () => {
+            console.log("WebSocket connection opened");
+            // Send a message to the server
+            socket.send("update");
+        };
+        socket.onmessage = (event) => {
+            var data = JSON.parse(event.data)
+            console.log(data)
+            update(data)
+
+            setTimeout(() => { socket.send("update"); }, 500)
+        }
+        socket.onclose = (event) => {
+            console.log("WebSocket connection closed");
+            socket = new WebSocket("ws://" + location.host + "/ws");
+        };
+        socket.onerror = (error) => {
+            console.error("WebSocket error:", error);
+            socket = new WebSocket("ws://" + location.host + "/ws");
+        };
     </script>
 </body>
 
