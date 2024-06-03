@@ -255,7 +255,6 @@
             };
             socket.onmessage = (event) => {
                 var data = JSON.parse(event.data)
-                console.time()
                 console.table(data)
                 update(data)
 
