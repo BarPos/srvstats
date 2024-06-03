@@ -168,7 +168,7 @@
                 <div class="data-left">
                     <p>CPU Ussage:</p>
                     <p>Memory:</p>
-                    <p>Swap:</p>
+                    <p class="hide-swap">Swap:</p>
                 </div>
                 <div class="data-center">
                     <div>
@@ -177,14 +177,14 @@
                     <div>
                         <div class="_memory_" style="width: 0%;"></div>
                     </div>
-                    <div>
+                    <div class="hide-swap">
                         <div class="_swap_" style="width: 0%;"></div>
                     </div>
                 </div>
                 <div class="data-right">
                     <p><span class="_cpu">0</span>%</p>
                     <p><span class="_memory">0</span>%</p>
-                    <p><span class="_swap">0</span>%</p>
+                    <p class="hide-swap"><span class="_swap">0</span>%</p>
                 </div>
             </div>
         </div>
@@ -200,7 +200,7 @@
     </div>
 
     <script>
-        const ver = "v0.5"
+        const ver = "v0.6"
         const v = document.querySelector(".version")
         document.title = "srvstats " + ver
         v.innerHTML = ver
@@ -217,6 +217,8 @@
         const _memory = document.querySelector("._memory_")
         const _swap = document.querySelector("._swap_")
 
+        const hideSwap = document.querySelectorAll(".hide-swap")
+
         const update = async (d) => {
             uptime.innerHTML = d.uptime
             cores.innerHTML = d.cores
@@ -227,6 +229,11 @@
             _cpu.style.width = d.cpu + "%"
             _memory.style.width = d.memory + "%"
             _swap.style.width = d.swap + "%"
+
+            hideSwap.forEach(element => {
+                if (g.swap = null) element.style.display = "none"
+                else element.style.display = "block"
+            });
         }
 
         var socket;
