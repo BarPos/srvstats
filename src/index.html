@@ -230,35 +230,34 @@
         }
 
         var socket;
-
         const connect = () => {
             if (window.location.protocol == "https:")
-                socker = new WebSocket("wss://" + location.host + "/ws");
+                socket = new WebSocket("wss://" + location.host + "/ws");
             else
-                socker = new WebSocket("ws://" + location.host + "/ws");
+                socket = new WebSocket("ws://" + location.host + "/ws");
+
+            socket.onopen = () => {
+                console.log("WebSocket connection opened");
+                // Send a message to the server
+                socket.send("update");
+            };
+            socket.onmessage = (event) => {
+                var data = JSON.parse(event.data)
+                console.log(data)
+                update(data)
+
+                setTimeout(() => { socket.send("update"); }, 500)
+            }
+            socket.onclose = (event) => {
+                console.log("WebSocket connection closed");
+                connect()
+            };
+            socket.onerror = (error) => {
+                console.error("WebSocket error:", error);
+                connect()
+            };
         }
         connect()
-
-        socket.onopen = () => {
-            console.log("WebSocket connection opened");
-            // Send a message to the server
-            socket.send("update");
-        };
-        socket.onmessage = (event) => {
-            var data = JSON.parse(event.data)
-            console.log(data)
-            update(data)
-
-            setTimeout(() => { socket.send("update"); }, 500)
-        }
-        socket.onclose = (event) => {
-            console.log("WebSocket connection closed");
-            connect()
-        };
-        socket.onerror = (error) => {
-            console.error("WebSocket error:", error);
-            connect()
-        };
     </script>
 </body>
 
