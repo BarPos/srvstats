@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>srvstats</title>
+    <title>srvstats v0.3</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
@@ -34,6 +34,13 @@
             max-width: 48rem;
             border: 1px #34495e solid;
             border-radius: 1rem;
+        }
+
+        .stats {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .data {
@@ -75,6 +82,7 @@
             transform: translateY(-16px);
             background: #3498db;
             transition: 100ms;
+            border-radius: 0;
         }
 
         .data1 {
@@ -83,6 +91,10 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+        }
+
+        .data1 div p:last-of-type {
+            margin-bottom: 0;
         }
 
         .data1-left {
@@ -126,38 +138,40 @@
 
 <body>
     <div class="box">
-        <h1>srvstats <small>v0.2</small></h1>
-        <div class="data1">
-            <div class="data1-left">
-                <p>Uptime:</p>
-                <p>CPU Cores:</p>
-            </div>
-            <div class=" data1-right">
-                <p><span class="_uptime">Loading...</span></p>
-                <p><span class="_cores">Loading...</span></p>
-            </div>
-        </div>
-        <div class="data">
-            <div class="data-left">
-                <p>CPU Ussage:</p>
-                <p>Memory:</p>
-                <p>Swap:</p>
-            </div>
-            <div class="data-center">
-                <div>
-                    <div class="_cpu_" style="width: 0%;"></div>
+        <h1>srvstats <small>v0.3</small></h1>
+        <div class="stats">
+            <div class="data1">
+                <div class="data1-left">
+                    <p>Uptime:</p>
+                    <p>CPU Cores:</p>
                 </div>
-                <div>
-                    <div class="_memory_" style="width: 0%;"></div>
-                </div>
-                <div>
-                    <div class="_swap_" style="width: 0%;"></div>
+                <div class=" data1-right">
+                    <p><span class="_uptime">Loading...</span></p>
+                    <p><span class="_cores">Loading...</span></p>
                 </div>
             </div>
-            <div class="data-right">
-                <p><span class="_cpu">0</span>%</p>
-                <p><span class="_memory">0</span>%</p>
-                <p><span class="_swap">0</span>%</p>
+            <div class="data">
+                <div class="data-left">
+                    <p>CPU Ussage:</p>
+                    <p>Memory:</p>
+                    <p>Swap:</p>
+                </div>
+                <div class="data-center">
+                    <div>
+                        <div class="_cpu_" style="width: 0%;"></div>
+                    </div>
+                    <div>
+                        <div class="_memory_" style="width: 0%;"></div>
+                    </div>
+                    <div>
+                        <div class="_swap_" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="data-right">
+                    <p><span class="_cpu">0</span>%</p>
+                    <p><span class="_memory">0</span>%</p>
+                    <p><span class="_swap">0</span>%</p>
+                </div>
             </div>
         </div>
     </div>
